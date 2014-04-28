@@ -1,4 +1,10 @@
 GPinch::Application.routes.draw do
+  root to: 'welcome#index'
+  # Static pages
+  match "about" => 'welcome#about', via: :get 
+  
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
