@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428054729) do
+ActiveRecord::Schema.define(version: 20140428222442) do
+
+  create_table "photos", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "image"
+    t.integer  "portfolio_id"
+    t.integer  "position"
+    t.boolean  "adult"
+    t.string   "exif"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["portfolio_id"], name: "index_photos_on_portfolio_id"
+
+  create_table "portfolios", force: true do |t|
+    t.string   "name"
+    t.boolean  "public"
+    t.float    "valuation"
+    t.string   "needs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
