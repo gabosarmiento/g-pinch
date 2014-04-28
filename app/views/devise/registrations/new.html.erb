@@ -1,0 +1,68 @@
+<div class="container-fluid content">
+<div id="content" class="col-sm-12 full">
+<div class="row">
+<div class="login-box">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :role => 'form', :class => "form-horizontal register"}) do |f| %>
+    
+    <div class="header">
+      Create your account
+    </div>
+    <%= devise_error_messages! %>
+    <div class="col-sm-12">
+    <div class="form-group">
+      <%= f.label :name, "username", class: "control-label" %>
+      <div class="controls row">
+      <div class="input-group col-sm-12">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <%= f.email_field :name, autofocus: true, class: 'form-control', id: "email", placeholder: "enter username" %>
+      </div>
+      </div>
+    </div> 
+    <div class="form-group">
+      <%= f.label :email, class: "control-label" %>
+      <div class="controls row">
+      <div class="input-group col-sm-12">
+      <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+      <%= f.email_field :email, class: 'form-control', id: "email", placeholder: "enter email" %>
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password, class: "control-label" , for: "password"  %>
+      <div class="controls row">
+      <div class="input-group col-sm-12">
+        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control', id: "password", placeholder: "enter password" %>
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: "control-label" , for: "password_confirmation"  %>
+      <div class="controls row">
+      <div class="input-group col-sm-12">
+        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' , id: "password_confirmation", placeholder: "retype password" %>
+      </div>
+      </div>
+    </div>
+    <!-- terms of use
+    <div class="confirm">
+      <input type="checkbox" name="agree"/>
+      <label for="agree">I agree to <a href="#">Term of Use</a></label>
+    </div>  
+     -->
+    <div class="text-center">
+     <%= f.submit 'Create Account!', :class => 'btn btn-primary btn-lg col-xs-12' %>
+    </div>
+  </div>
+  <% end %>
+
+<div class="clearfix"></div>
+  </div>
+</div><!--/row-->
+    
+</div>  <!--/content-->
+</div>
+
+
+

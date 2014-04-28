@@ -1,0 +1,12 @@
+<p>Welcome to Pepperpinch <%= @email %>!</p>
+
+<p>Please confirm your account email through the link below:</p>
+
+<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>This email is generated automatically, even though if you'd like to get in touch or help us make a better app feel free to reply to this message and I'll personally respond to your concerns. But if you didn't create an account on Pepperpinch, feel free to disregard this message and sorry for the inconvenience.</p>
+
+<p>Bests,</p>
+
+<p> @gabosarmiento</p>
+<%= link_to "Pepperpinch.com", 'pepperpinch.com'  %>

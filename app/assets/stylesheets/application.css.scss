@@ -1,13 +1,15 @@
 @import "bootstrap";
-
+@import "font-awesome";
 /* universal */
 
 html {
   overflow-y: scroll;
+  font-family: 'FontAwesome';
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 40px;
+  font-family: 'FontAwesome';
 }
 
 section {
@@ -24,6 +26,58 @@ textarea {
     margin-bottom: 10px;
   }
 }
+/* navigation bar */
+.nav {
+  position: relative;
+  z-index: 999; 
+  height: 40px; 
+
+}
+
+.nav > li > a {
+  padding: 10px 10px; 
+}
+
+.navbar {
+  min-height: 40px; 
+}
+.navbar-brand {
+  padding: 10px 10px; 
+  height: 40px; 
+}
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  font-family: 'FontAwesome';
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+/* User info for header */
+.user-info {
+  margin-top: 10px;
+  color: #999999;
+  a {
+    color: #999999;
+  }
+  a:hover {
+      color: white; 
+  }
+  
+}
+
 
 /* typography */
 
@@ -52,20 +106,111 @@ p {
   line-height: 1.7em;
 }
 
-/* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
+/* Login Box & Register Box
+=================================================================== */
+.login-box,
+.register-box {
+  width: 400px;
+  padding: 20px;
+  margin: 100px auto;
+  background: #fff;
+}
+.login-box .header,
+.register-box .header {
+  background: #384042;
+  color: white;
+  text-align: center;
+  margin: -20px -20px 20px -20px;
+  padding: 15px;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
+}
+.login-box label,
+.register-box label {
+  margin: 10px 5px -10px 5px;
+}
+.login-box .confirm,
+.register-box .confirm {
+  position: relative;
+  margin: 20px 0 10px -15px;
+}
+.login-box .confirm label,
+.register-box .confirm label {
+  position: absolute;
+  top: -9px;
+  left: 30px;
+}
+.login-box form.register .input-group-addon,
+.register-box form.register .input-group-addon {
+  width: 35%;
+}
+/* Text with HR Line
+=================================================================== */
+.text-with-hr {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.text-with-hr:before {
+  position: absolute;
+  content: '';
+  top: 20px;
+  left: 0px;
+  width: 100%;
+  border-bottom: 1px solid #e1e6ef;
+  z-index: -1;
+}
+.text-with-hr span {
+  display: inline-block;
+  background: white;
+  padding: 10px;
+}
+
+/* Facebook buttons in login box */
+
+.btn-facebook{
+  color: white;
+  position: relative;
+  text-align: center;
+  height: 40px;
+  width: 100%;
+  font-family: 'FontAwesome';
   font-weight: bold;
-  line-height: 1;
-  &:hover {
-    color: #fff;
-    text-decoration: none;
-  }
+  padding: 10px 0;
+}
+.btn-facebook:before{
+  position: absolute;
+  display: block;
+  height: 40px;
+  width: 40px;
+  top: 0;
+  left: 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  font-size: 20px;
+  padding: 6px 0;
+}
+.btn-facebook span{
+  margin-left: 40px;
+}
+.btn-facebook:hover,
+.btn-twitter:hover,
+.btn-linkedin:hover {
+  color: white;
+}
+.btn-facebook {
+  background: #3b5998;
+  border: 1px solid #3b5998;
+}
+.btn-facebook:before {
+  content: "\f09a";
+  background: #344e86;
+  margin: -1px;
+}
+.btn-facebook:hover {
+  background: #344e86;
+}
+.btn-facebook:hover:before {
+  background: #2d4373;
 }

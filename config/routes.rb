@@ -1,9 +1,14 @@
 GPinch::Application.routes.draw do
   root to: 'welcome#index'
+  authenticated :user do
+    root :to => "welcome#index", :as => "authenticated_root"
+  end
   # Static pages
   match "about" => 'welcome#about', via: :get 
-  
 
+  # paths for models
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  resources :users, only: [:update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,28 @@
+<div class="container-fluid content">
+  <div class="row">
+  <div id="content" class="col-sm-12 full">
+  <div class="row">
+  <div class="login-box">
+
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+ <div class="header">
+  Resend confirmation instructions
+</div>
+  <%= devise_error_messages! %>
+  <fieldset class="col-sm-12">
+    <div class="form-group">
+      <%= f.label :email %>
+      <div class="controls row">
+        <div class="input-group col-sm-12">
+          <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+          <%= f.email_field :email, autofocus: true, class: 'form-control', id: "email", placeholder: "enter email" %>
+        </div>
+      </div>
+    </div>
+
+  <div class="text-center"><%= f.submit "Resend confirmation instructions", :class => 'btn btn-primary' %></div>
+</fieldset>
+<% end %>
+
+

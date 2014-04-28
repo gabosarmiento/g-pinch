@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
 
@@ -11,6 +11,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
 end
 
 # Use SCSS for stylesheets
@@ -41,6 +42,9 @@ end
 
 gem 'figaro'
 gem 'bootstrap-sass', '~> 3.1.1'
+gem "font-awesome-rails"
+gem 'devise', '3.0.0.rc'
+gem 'omniauth-facebook'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
