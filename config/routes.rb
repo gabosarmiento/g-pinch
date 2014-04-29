@@ -1,5 +1,5 @@
 GPinch::Application.routes.draw do
- 
+
   root to: 'welcome#index'
   authenticated :user do
     root :to => "welcome#index", :as => "authenticated_root"
@@ -11,9 +11,12 @@ GPinch::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :users, only: [:update]
   resources :portfolios do 
-    resources :photos
+    resources :photos do 
+      resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'photo' }
+    end
   end
-
+  resources :profile, only: [:index, :show, :update, :destroy]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
