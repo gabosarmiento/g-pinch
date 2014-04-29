@@ -1,8 +1,8 @@
 GPinch::Application.routes.draw do
-
+  
   root to: 'welcome#index'
   authenticated :user do
-    root :to => "welcome#index", :as => "authenticated_root"
+    root :to => "jobs#index", :as => "authenticated_root"
   end
   # Static pages
   get "about" => 'welcome#about'
@@ -17,6 +17,8 @@ GPinch::Application.routes.draw do
   end
   resources :profile, only: [:index, :show, :update, :destroy]
   
+  resources :jobs, only: [:index, :show, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
