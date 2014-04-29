@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429034354) do
+ActiveRecord::Schema.define(version: 20140429041535) do
 
   create_table "jobs", force: true do |t|
     t.integer  "portfolio_id"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20140429034354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "profiles", force: true do |t|
+    t.string   "state"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
