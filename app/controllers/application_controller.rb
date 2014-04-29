@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  protected
   def after_sign_in_path_for(resource)
     jobs_path
   end
@@ -13,7 +14,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
-  protected
+  
   def user_not_authorized(exception)
    policy_name = exception.policy.class.to_s.underscore
 
