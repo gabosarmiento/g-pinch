@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428222442) do
+ActiveRecord::Schema.define(version: 20140429034354) do
+
+  create_table "jobs", force: true do |t|
+    t.integer  "portfolio_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jobs", ["portfolio_id"], name: "index_jobs_on_portfolio_id"
+  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id"
 
   create_table "photos", force: true do |t|
     t.string   "title"
