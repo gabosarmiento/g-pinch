@@ -22,6 +22,7 @@
 #  unconfirmed_email      :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  role                   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -33,7 +34,8 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_one :profile
   has_many :photos
-
+  
+  # Devise callback for facebook oauth 
    def self.find_for_facebook_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -50,4 +52,25 @@ class User < ActiveRecord::Base
     end
     user
   end
+ # Conversion of the role name to string (to_s) is necessary, because the database will contain strings while we are passing symbols to this method.
+  def role?(base_role)
+    role == base_role.to_s
+  end
+
+  #Checks if an user has a job with that portfolio
+  def is_his_job?(portfolio)
+    if self.jobs.empty?
+      return false
+    else
+      self.jobs.each do |job|
+        if job.portfolio_id == portfolio.id
+          return true
+        else
+          return false 
+        end
+      end
+    end  
+  end
+ 
+  
 end
