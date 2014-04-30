@@ -2,7 +2,7 @@ GPinch::Application.routes.draw do
 
   # Static pages
   get "about" => 'welcome#about'
-
+  get "gallery" => 'portfolios#gallery'
   # paths for models
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   resources :users, only: [:update]

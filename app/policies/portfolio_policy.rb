@@ -4,7 +4,11 @@ class PortfolioPolicy < ApplicationPolicy
     true
   end 
   def show? 
-    record.public? || (record.user == user || user.role?(:admin)) || user.jobs.is_his_job?(record)
+    record.public? && (record.user == user || user.role?(:admin)) 
+  end
+
+  def gallery?
+   false
   end
 
 end

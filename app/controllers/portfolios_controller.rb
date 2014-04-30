@@ -7,6 +7,8 @@ class PortfoliosController < ApplicationController
   end
 
   def show
+    @portfolio = Portfolio.find(params[:id])
+    authorize @portfolio
   end
 
   def new
@@ -31,6 +33,12 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+  end
+
+  def gallery
+    @portfolios = Portfolio.visible_to(current_user)
+    @portfolio = @portfolios.first
+    authorize @portfolio
   end
 
   private 

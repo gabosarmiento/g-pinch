@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
-  protected
+  private
   def after_sign_in_path_for(resource)
     jobs_path
   end
@@ -15,13 +15,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  def user_not_authorized(exception)
-   policy_name = exception.policy.class.to_s.underscore
-
-   flash[:error] = I18n.t "pundit.#{policy_name}.#{exception.query}",
-     default: 'You cannot perform this action.'
-   redirect_to(request.referrer || root_path)
+  def user_not_authorized
+    flash[:error] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || root_path)
   end
+  
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:name, :email, :password, :password_confirmation)
