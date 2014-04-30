@@ -8,7 +8,7 @@ class PortfolioPolicy < ApplicationPolicy
   end
 
   def gallery?
-   false
+   true
   end
 
 end
