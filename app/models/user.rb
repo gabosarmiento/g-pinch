@@ -60,13 +60,13 @@ class User < ActiveRecord::Base
   #Checks if an user has a job with that portfolio
   def is_his_job?(portfolio)
     if self.jobs.empty?
-      return false
+      false
     else
       self.jobs.each do |job|
         if job.portfolio_id == portfolio.id
-          return true
+          true
         else
-          return false 
+          false
         end
       end
     end  

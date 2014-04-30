@@ -15,6 +15,7 @@ class Job < ActiveRecord::Base
   default_scope { order('created_at DESC') }
   scope :accepted_jobs, -> { with_state(:active) }
   scope :unresponded_jobs, -> { with_state(:inactive) }
+  scope :completed, -> { with_state(:finished) }
 
 #state machine definitions
   state_machine initial: :new do

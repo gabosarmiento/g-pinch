@@ -1,5 +1,9 @@
 GPinch::Application.routes.draw do
-
+  #call to accept, reject, view and complete job on portfolio
+  match "jobs/:job_id/accept" => "jobs#accept", via: :get, :as => "accept_job"
+  match "jobs/:job_id/reject" => "jobs#reject", via: :get, :as => "reject_job"
+  match "jobs/:job_id/view" => "jobs#view", via: :get, :as => "view_job"
+  match "jobs/:job_id/complete" => "jobs#complete", via: :get, :as => "complete_job"
   # Static pages
   get "about" => 'welcome#about'
   get "gallery" => 'portfolios#gallery'

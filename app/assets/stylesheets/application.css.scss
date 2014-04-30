@@ -235,4 +235,49 @@ p {
   list-style: none;
 }
 
+/* Smallstats */
+.smallstat {
+  background: whitesmoke;
+  position: relative;
+  text-align: right;
+  margin-bottom: 30px;
+  height: 70px;
+  border: 1px solid #e1e6ef;
+}
+
+.smallstat i {
+  text-align: center;
+  display: block;
+  color: black;
+  width: 100px;
+  height: 68px;
+  font-size: 22px;
+  line-height: 68px;
+  float: left;
+  margin-right: 10px;
+}
+ 
+.smallstat i.lightBlue {
+  background: #67c2ef;
+}
+
+.smallstat i.white {
+  background: white;
+}
+.smallstat .title,
+.smallstat .value {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.smallstat .value {
+  padding-top: 16px;
+  font-size: 16px;
+}
+.smallstat .title {
+  color: #999;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
 
