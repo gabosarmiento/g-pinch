@@ -7,10 +7,20 @@
         <% end %>
     </div>
     <nav>
+        <ul class="nav navbar-nav navbar-actions navbar-left">
+          <li><%= link_to "manage", portfolios_path %>
+          </li>
+          <li><%= link_to "experts", profile_index_path%>
+          </li>
+          <li><%= link_to "explore", gallery_path %></li>
+        </ul>
+        <!-- <ul class="nav-bar nav-center">
+          <li><%= link_to "#", class: "btn btn-default" do %>subscribe now!<% end %></li>
+        </ul> -->
         <ul class="nav navbar-nav navbar-actions navbar-right">
             <% if current_user %>
             <li><div class="user-info"> Hola <%= link_to (current_user.name || current_user.email), edit_user_registration_path %>!</div></li>
-             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
              <% else %>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "About",  about_path %></li>

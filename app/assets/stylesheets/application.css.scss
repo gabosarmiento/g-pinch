@@ -46,12 +46,20 @@ textarea {
 
 .navbar {
   min-height: 40px; 
+  text-align: center;
 }
 .navbar-brand {
   padding: 10px 10px; 
   height: 40px; 
 }
-
+/* centers a button with navbar text-align*/
+.navbar .nav-center {
+  margin-top: 4px;
+  display: inline-block;
+  float: none;
+  margin-bottom: 2px;
+  
+}
 /* header */
 
 #logo {
