@@ -3,6 +3,25 @@
     <div class="row">
       <div class="panel panel-default">
         <div class="panel-heading">
+          Portfolios under evaluation
+          <span class="badge pull-right"><span class="js-commisioned-count"><%= @commissioned.count %></span></span>
+        </div>
+        <div class="panel-body">
+          <div class="col-sm-12">
+            <ul>
+             <% @portfolios.each do |portfolio| %>
+            <% unless portfolio.jobs.empty? %>
+            <li><%= link_to portfolio.name, jobs_path %><span class="badge pull-right"><%= portfolio.jobs.where(portfolio_id: portfolio.id).count %></span>
+            </li>
+            <% end %>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
           Portfolios
           <span class="badge pull-right"><span class="js-portfolios-count"><%= @portfolios.count %></span></span>
         </div>

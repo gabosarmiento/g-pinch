@@ -3,6 +3,7 @@ class PortfoliosController < ApplicationController
   def index
     @portfolios = current_user.portfolios
     @portfolio = current_user.portfolios.new
+    @commissioned = current_user.portfolios.under_revision
     authorize @portfolio
   end
 
@@ -36,9 +37,9 @@ class PortfoliosController < ApplicationController
   end
 
   def gallery
-    @portfolios = Portfolio.visible_to(current_user).paginate(page: params[:page], per_page: 10)
-    @portfolio = @portfolios.first
-    authorize @portfolio
+    @portfolios = Portfolio.visible.paginate(page: params[:page], per_page: 10)
+    @validation_portfolio = current_user.portfolios.new
+    authorize @validation_portfolio
   end
 
   private 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429061949) do
+ActiveRecord::Schema.define(version: 20140430071354) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140429061949) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   add_index "jobs", ["portfolio_id"], name: "index_jobs_on_portfolio_id"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 20140429061949) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "state"
   end
 
   add_index "portfolios", ["user_id"], name: "index_portfolios_on_user_id"
