@@ -7,6 +7,30 @@ class JobsController < ApplicationController
   end
 
   def create
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @judge = User.find(params[:job][:user_id])
+    @job = Job.new(job_params)
+    @job.user_id = @judge.id
+    @job.portfolio_id =  @portfolio.id
+    respond_to do |format|
+      if @job.save
+        format.html {
+          redirect_to @job,
+            notice: 'job was successfully created.'
+        }
+        format.json {
+          render json: @job,
+            status: :created,
+            location: @job
+        }
+      else
+        format.html { render 'new' }
+        format.json {
+          render json: @job.errors,
+            status: :unprocessable_entity
+      }
+      end
+    end
   end
 
   def destroy
@@ -33,5 +57,10 @@ class JobsController < ApplicationController
     @job = Job.find(params[:job_id])
     @job.complete
     redirect_to :back
+  end
+
+  private
+  def job_params
+    params.require(:job).permit(:user_id, :portfolio_id, :price)
   end
 end

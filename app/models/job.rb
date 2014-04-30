@@ -7,16 +7,23 @@
 #  user_id      :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  state        :string(255)
+#  price        :float
 #
 
 class Job < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :user
+  has_many :sales
   default_scope { order('created_at DESC') }
   scope :accepted_jobs, -> { with_state(:active) }
   scope :unresponded_jobs, -> { with_state(:inactive) }
   scope :completed, -> { with_state(:finished) }
 
+  validates_numericality_of :price,
+    greater_than: 49,
+    message: "must be at least 50 cents"
+    
 #state machine definitions
   state_machine initial: :new do
     event :view do

@@ -51,6 +51,7 @@ gem "bootstrap-switch-rails"
 gem 'will_paginate', '~> 3.0.5'
 gem 'state_machine'
 gem 'whenever', :require => false
+gem 'stripe', '~> 1.11.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,4 +1,9 @@
 GPinch::Application.routes.draw do
+  #stripe links
+  get '/buy/:user_id', to: 'transactions#new', as: :show_buy 
+  post'/buy/:user_id',to:'transactions#create', as: :buy 
+  get'/pickup/:guid', to:'transactions#pickup', as: :pickup
+  match '/iframe/:user_id' => 'transactions#iframe', via: :get, as: :buy_iframe
   #call to accept, reject, view and complete job on portfolio
   match "jobs/:job_id/accept" => "jobs#accept", via: :get, :as => "accept_job"
   match "jobs/:job_id/reject" => "jobs#reject", via: :get, :as => "reject_job"
