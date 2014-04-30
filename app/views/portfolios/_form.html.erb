@@ -1,0 +1,58 @@
+<%= form_for portfolio , remote: true do |f| %>
+<div class="col-sm-12">
+  <!-- errors notifications begin -->
+  <% if portfolio.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>There are <%= pluralize(portfolio.errors.count, "error") %>.</h4>
+      <ul>
+        <% portfolio.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- errors notifications end -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <i class="fa fa-asterisk"></i><span class="break"></span> Create new portfolio 
+    </div>
+    <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <%= form_group_tag(portfolio.errors[:name]) do %>
+        <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control", :autofocus => true, placeholder: "enter name.." %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= form_group_tag(portfolio.errors[:needs]) do %>
+        <div class="form-group">
+            <%= f.label :needs %>
+            <%= f.text_field :needs, class: "form-control", placeholder: "what does this portfolio need?" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <%= form_group_tag(portfolio.errors[:public]) do %>
+        <div class="form-group">
+            <%= f.label :public, "Public" %>
+            <%= f.check_box :public, {class: "switch"} ,'true', 'false' %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group">
+          <br>
+         <%= f.submit class: "btn btn-sm btn-primary" do %>
+          <i class="fa fa-dot-circle-o"></i> Create
+          <% end %>
+        </div>
+      </div>
+    </div> 
+    </div> 
+  </div> <!-- /panel ends -->
+</div> <!-- /col ends -->
+<% end %> <!-- /form ends -->
+

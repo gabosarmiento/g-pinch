@@ -47,6 +47,7 @@ gem 'devise', '3.0.0.rc'
 gem 'omniauth-facebook'
 gem 'annotate'
 gem 'pundit'
+gem "bootstrap-switch-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

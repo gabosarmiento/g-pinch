@@ -1,5 +1,5 @@
 GPinch::Application.routes.draw do
-  
+
   # Static pages
   get "about" => 'welcome#about'
 

@@ -1,0 +1,8 @@
+<% if @portfolio.valid? %>
+  $('.js-portfolios').append("<%= escape_javascript(render(@portfolio)) %>");
+  $('.js-portfolios-count').html("<%= @portfolios.count %>")
+  $('.js-new-portfolio').html("<%= escape_javascript(render partial: 'form', locals: { portfolio: @new_portfolio }) %>");
+  $(".switch").bootstrapSwitch();
+<% else %>
+  $('.js-new-portfolio').html("<%= escape_javascript(render partial: 'form', locals: { portfolio: @portfolio }) %>");
+<% end %>
