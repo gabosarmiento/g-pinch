@@ -1,5 +1,8 @@
 <h1>Thanks for your payment!</h1>
 <p>The judge "<%= @job.user.name %>" you selected has 7 days to respond to your request. We've hold your payment and if under any circumstance that person doesn't respond, you'll get your money back. Guaranteed.
 </p>
-
+<ul>
+  <li>Find your job overview at: <%= link_to "Job", @job %>
+  </li>
+</ul>
 <%= link_to "go back to job", @job %>

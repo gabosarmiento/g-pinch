@@ -55,6 +55,8 @@ class Sale < ActiveRecord::Base
         fee_amount:      balance.fee
       )
       self.finish!
+      self.job.purchase
+      self.job.portfolio.assign
       rescue Stripe::StripeError => e
       self.update_attributes(error: e.message)
       self.fail!

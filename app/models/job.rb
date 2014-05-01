@@ -20,7 +20,10 @@ class Job < ActiveRecord::Base
   scope :unresponded_jobs, -> { with_state(:inactive) }
   scope :completed, -> { with_state(:finished) }
 
-    
+  validates_numericality_of :price_cents,
+    greater_than: 49,
+    message: "must be at least 50 cents"
+
 #state machine definitions
   state_machine initial: :created do
     event :purchase do

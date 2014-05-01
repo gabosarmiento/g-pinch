@@ -2,12 +2,17 @@
     <div class="col-sm-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        My jobs
+        Jobs hired by me
       </div>
       <div class="panel-body">
-        <ul>
+        <ul class="panel-jobs">
+        <% @portfolios.each do |portfolio| %>
+        <% portfolio.jobs.each do |job| %>
           <li>
+            <%= link_to "job on portfolio-#{portfolio.name}", job %> by <%= job.user.name %>
           </li>
+          <% end %> 
+          <% end %>
         </ul>
       </div>
     </div>

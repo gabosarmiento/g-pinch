@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.where(user_id: current_user.id)
-    
+     @portfolios = current_user.portfolios.under_revision
   end
   def new
     @portfolios = current_user.portfolios
@@ -11,6 +11,7 @@ class JobsController < ApplicationController
   end
   def show
     @job = Job.find(params[:id])
+    @portfolios = current_user.portfolios.under_revision
   end
 
   def create
