@@ -2,13 +2,15 @@ class PortfoliosController < ApplicationController
   respond_to :html, :js 
   def index
     @portfolios = current_user.portfolios
-    @portfolio = current_user.portfolios.new
+    @portfolio = Portfolio.new
     @commissioned = current_user.portfolios.under_revision
     authorize @portfolio
   end
 
   def show
     @portfolio = Portfolio.find(params[:id])
+    @judges = User.where(role: "judge")
+    @job = @portfolio.jobs.new
     authorize @portfolio
   end
 

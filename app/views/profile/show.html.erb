@@ -1,3 +1,25 @@
 <h1><%= @user.name %></h1>
 <h2>Some cool things go here</h2>
-<h1> Hire Me Now! </h1>
+
+<div>
+</div>
+<div class="col-sm-12 text-center">
+    <a href="#" class="js-show-hide btn btn-default" data-selector="js-hire"><h3> Hire Me Now!</h3></a>
+  </div>
+<div class="js-hire hide">
+  <div class="col-sm-12 text-center">
+   <%= render partial: "/jobs/form", locals: {portfolios: @portfolios, job: @job, judges: @judges} %>
+ </div>
+</div>
+<script>
+$(".js-show-hide").click(function() {
+    var selector = "." + $(this).attr('data-selector');
+    if($(selector).is(":visible")) {
+      $(selector).removeClass('hide').slideUp();
+    }
+    else {
+      $(selector).hide().removeClass('hide').slideDown();
+    }
+    return false;
+  });
+</script>

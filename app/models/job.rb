@@ -8,7 +8,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  state        :string(255)
-#  price        :float
+#  price_cents  :integer
 #
 
 class Job < ActiveRecord::Base
@@ -20,12 +20,12 @@ class Job < ActiveRecord::Base
   scope :unresponded_jobs, -> { with_state(:inactive) }
   scope :completed, -> { with_state(:finished) }
 
-  validates_numericality_of :price,
-    greater_than: 49,
-    message: "must be at least 50 cents"
     
 #state machine definitions
-  state_machine initial: :new do
+  state_machine initial: :created do
+    event :purchase do
+        transition :created => :new
+    end
     event :view do
       transition :new => :seen
     end

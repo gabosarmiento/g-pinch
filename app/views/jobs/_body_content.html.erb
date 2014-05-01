@@ -1,0 +1,56 @@
+<% @jobs.each do |job| %>
+<tr>
+  <td><%# image_tag( job.portfolio.user.avatar.small.url ) if job.portfolio.user.avatar?  %>
+    <%= link_to job.portfolio.user.name, job.portfolio.user %>
+  </td>
+  <td class="text-center" style="vertical-align:middle"><%= link_to job.portfolio.name, job.portfolio %></td>
+  <td class="text-center" style="vertical-align:middle"><%= job.portfolio.photos.count %></td>
+  <td class="text-center" style="vertical-align:middle">
+    <% case job.state %>
+       <% when 'new' %>
+        <span class="label label-info">new</span> 
+       <% when 'seen' %>
+        <span class="label label-default">seen</span> 
+       <% when 'active' %>
+         <span class="label label-warning">evaluating</span> 
+       <% when 'canceled' %>
+        <span class="label label-danger">rejected</span>
+        <% when 'inactive' %>
+        <span class="label label-default" data-rel="tooltip" title="Updated status due to lack of response">unresponded</span>
+        <% when 'finished' %>
+        <span class="label label-success">completed</span>
+       <% else %>
+        <span class="label label-danger">not available</span>
+     <% end %>
+  </td> 
+  <td>
+     <% case job.state %>
+        <% when 'new' %>
+        <%= link_to view_job_path(job), class: "btn btn-primary", data: {rel: "tooltip", title: "See photos"} do %>
+        <i class="fa fa-eye"></i>
+        <% end %>
+        
+        <% when 'seen' %>
+        <%= link_to accept_job_path(job), class: "btn btn-success", data: {rel: "tooltip", title: "Accept request"} do %>
+        <i class="fa fa-check-square-o"></i>
+        <% end %>
+        <%= link_to reject_job_path(job), class: "btn btn-danger", data: {rel: "tooltip", title: "Reject request"} do %>
+        <i class="fa fa-ban "></i>
+        <% end %>
+        <% when 'active' %>
+        <%# link_to job_pinches_path(job), class: "btn btn-info", data: {rel: "tooltip", title: "Start to pinch"} do %>
+        <i class="fa fa-thumb-tack"></i>
+        <%# end %>
+
+        <%= link_to complete_job_path(job), class: "btn btn-primary", data: {rel: "tooltip", title: "Mark as complete"} do %>
+        <i class="fa fa-check"></i>
+        <% end %>
+
+        <% else %>
+        No actions to perform
+        <% end %>              
+  </td>
+  <td style="vertical-align:middle"><%=  time_ago_in_words(job.created_at) %></td>
+  <td style="vertical-align:middle"><%=  time_ago_in_words(job.updated_at) %></td>     
+</tr>
+<% end %>

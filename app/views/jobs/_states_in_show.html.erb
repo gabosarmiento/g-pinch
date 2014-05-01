@@ -1,0 +1,20 @@
+<% case @job.state %>
+<% when 'new' %>
+ <span class="label label-primary">assigned</span> Payment received. But Judge hasn't accepted yet.
+
+<% when 'seen' %>
+ <span class="label label-default">seen</span> Judge saw the portfolio but hasn't started yet.
+
+<% when 'active' %>
+ <span class="label label-success">accepted</span> Judge is reviewing the portfolio.
+
+ <% when 'canceled' %>
+<span class="label label-danger">rejected</span> Sorry judge rejected this portfolio. Refunded.
+
+<% when 'finished' %>
+ <span class="label label-info">completed</span> Job finished
+<% when 'inactive' %>
+ <span class="label label-warning">unresponded</span> Job was not taken by judge after 7 days after being notified. Refunded.
+<% else %>
+No state to show. contact administrator.
+<% end %>

@@ -1,36 +1,43 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.where(user_id: current_user.id)
+    
   end
-
+  def new
+    @portfolios = current_user.portfolios
+    @judges = User.find(params[:id])
+    @price = User::PRICE
+    @job = Job.new
+  end
   def show
+    @job = Job.find(params[:id])
   end
 
   def create
-    @portfolio = Portfolio.find(params[:portfolio_id])
+    @judges = User.where(:role => "judge")
+    @portfolios = current_user.portfolios
+    @portfolio = Portfolio.find(params[:job][:portfolio_id])
     @judge = User.find(params[:job][:user_id])
-    @job = Job.new(job_params)
-    @job.user_id = @judge.id
-    @job.portfolio_id =  @portfolio.id
-    respond_to do |format|
-      if @job.save
-        format.html {
-          redirect_to @job,
-            notice: 'job was successfully created.'
-        }
-        format.json {
-          render json: @job,
-            status: :created,
-            location: @job
-        }
-      else
-        format.html { render 'new' }
-        format.json {
-          render json: @job.errors,
-            status: :unprocessable_entity
-      }
+    @job = @portfolio.jobs.create(user_id: @judge.id)
+    @job.price_cents = User::PRICE
+     if @job.save
+        respond_to do |format|
+          format.html {
+            redirect_to @job,
+            notice: 'Job was successfully created'
+          }
+        end
       end
-    end
+
+    #   flash[:notice] = "Job was saved"
+    #   redirect_to @job
+    # else
+    #   flash[:error] = "There was an error saving the job"
+    #   render "new"
+        # respond_to do |f|
+        #   f.html { redirect_to @job}
+        # end
+    
   end
 
   def destroy
@@ -61,6 +68,6 @@ class JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:user_id, :portfolio_id, :price)
+    params.require(:job).permit(:user_id, :portfolio_id, :price_cents)
   end
 end

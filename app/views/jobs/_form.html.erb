@@ -1,0 +1,12 @@
+<%= form_for job, :url => jobs_path, html: {class: "job-form"} do |f| %>
+  <span class="help-block">First assign a job to get done</span>
+  I want <%= f.label :user_id, "Judge" %>
+  <%= collection_select(:job, :user_id, judges, :id, :name, options ={:prompt => "Select a judge"}) %>
+  to review
+  <%= f.label :portfolio_id, "my portfolio" %>
+  <%= collection_select(:job, :portfolio_id, portfolios, :id, :name, options ={:prompt => "Select a portfolio"}) %>
+  for
+  <%= f.label :price, formatted_price(@price) %>
+  <br>
+  <%= f.submit "assign job", class: "btn btn-default" %>
+  <% end %>

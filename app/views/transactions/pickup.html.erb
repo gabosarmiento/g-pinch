@@ -1,3 +1,5 @@
-<h1><%= @job.user.name %> Hired!</h1>
-<p>Thanks for hiring "<%= @job.name %>". You'll receive more information in the next 24 hours.
+<h1>Thanks for your payment!</h1>
+<p>The judge "<%= @job.user.name %>" you selected has 7 days to respond to your request. We've hold your payment and if under any circumstance that person doesn't respond, you'll get your money back. Guaranteed.
 </p>
+
+<%= link_to "go back to job", @job %>

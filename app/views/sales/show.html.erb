@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+   <p id="notice"><%= notice %></p> 
+  </div>
+<table class="table table-bordered table-striped">
+  <tbody>
+    <% @sale.versions.each do |version| %>
+    <tr>
+      <td><%= version.created_at %></td>
+      <td><%= version.event %></td>
+      <td>
+        <% version.changeset.sort.each do |key, value| %>
+          <b><%= key %></b>: <%= value[0] %> to <%= value[1] %><br>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<table class="table table-bordered table-striped">
+  <tbody>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+  <% @sale.attributes.sort.each do |key, value| %>
+  <tr>
+    <td><%= key %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
+<%= link_to 'Stripe', "https://manage.stripe.com/payments/#{@sale.stripe_id}" , class: "btn btn-lg btn-primary" %>
+<%= link_to 'Back', sales_path, class: "btn btn-default" %>

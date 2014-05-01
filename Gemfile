@@ -52,6 +52,10 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'state_machine'
 gem 'whenever', :require => false
 gem 'stripe', '~> 1.11.0'
+gem 'paper_trail', '~> 3.0.1'
+
+#gem from tutorial to generate pdfs from html
+gem 'docverter'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

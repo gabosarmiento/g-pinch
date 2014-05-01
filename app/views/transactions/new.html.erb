@@ -3,13 +3,12 @@
 <% if @error %>
 <%= @error %>
 <% end %>
-<p>Price: <%= formatted_price(@job.price) %></p>
-<%= form_tag buy_path(user_id: @job.user_id) do %>
+<p>Price: <%= formatted_price(@job.price_cents) %></p>
+<%= form_tag hire_path(user_id: @job.user_id) do %>
   <script src="https://checkout.stripe.com/v2/checkout.js"
     class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description="<%= @job.user.name %>"
-    data-amount="<%= @job.price %>"></script>
+    data-description="<%= current_user.name %>"
+    data-amount="<%= @job.price_cents %>"></script>
 <% end %>
 
-<%= render 'form', user_id: @job.user_id, sale: @sale, price: formatted_price(@job.price) %>

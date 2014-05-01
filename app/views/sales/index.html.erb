@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">sales</div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>amount</th>
+      <th>email</th>
+      <th>date</th>
+      <th>state</th>
+      <th>card expiration</th>
+      <th>error </th>
+      <th>fee amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sales.each do |sale| %>
+      <tr>
+        <td><%= link_to sale.id, sale %></td>
+        <td><%= formatted_price(sale.amount) %></td>
+        <td><%= sale.email %></td>
+        <td><%= (sale.created_at).strftime('%a %b %d') %></td>
+        <td><%= sale.state %></td>
+        <td><%= sale.card_expiration %></td>
+        <td><%= sale.error %></td>
+        <td><%= formatted_price(sale.fee_amount) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+    
+  </table>
+</div>

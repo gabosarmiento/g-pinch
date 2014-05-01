@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <h2>Receipt</h2>
+    <p>
+      You hired <%= @sale.job.user.name %> for <%= formatted_price(@sale.amount) %> on <%= @sale.created_at %>.</p>
+
+    <p><%= link_to "Click here", pickup_url(guid: @sale.guid) %> to review your job.</p>
+
+    <p>Thank you for your purchase!</p> 
+
+    <p>-- Managing team</p> 
+  </body>
+</html>
