@@ -7,6 +7,7 @@
         <% end %>
     </div>
     <nav>
+        <% if current_user %>
         <ul class="nav navbar-nav navbar-actions navbar-left">
           <li><%= link_to "manage", portfolios_path %>
           </li>
@@ -14,6 +15,7 @@
           </li>
           <li><%= link_to "explore", gallery_path %></li>
         </ul>
+        <% end %>
         <!-- <ul class="nav-bar nav-center">
           <li><%= link_to "#", class: "btn btn-default" do %>subscribe now!<% end %></li>
         </ul> -->
