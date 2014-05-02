@@ -23,6 +23,7 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :string(255)
+#  avatar                 :string(255)
 #
 
 class User < ActiveRecord::Base

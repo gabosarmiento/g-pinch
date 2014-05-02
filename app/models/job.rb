@@ -10,9 +10,7 @@
 #  state        :string(255)
 #  price_cents  :integer
 #
-#https://github.com/pluginaweek/state_machine/blob/master/lib/state_machine/machine.rb
-# This will allow you to define events like "open" as described above and
-# still generate the "open" instance helper method.
+
 StateMachine::Machine.ignore_method_conflicts = true
 class Job < ActiveRecord::Base
   belongs_to :portfolio
