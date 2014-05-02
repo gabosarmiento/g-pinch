@@ -1,7 +1,10 @@
 <h1>list of professionals available</h1>
 <% unless @profiles.empty? %>
    <% @profiles.each do |profile| %>
-      <%= link_to "profile", profile %>
+   <div>
+      <%= image_tag(profile.user.avatar.profile.url) if profile.user.avatar? %>
+      <%= link_to profile.user.name.to_s.humanize, profile %>
+    </div>
    <% end %>
 <% else %>
 This can't be empty

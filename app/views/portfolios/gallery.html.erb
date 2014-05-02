@@ -1,6 +1,11 @@
 <ul>
 <% @portfolios.each do |portfolio| %>
-<li><%= link_to portfolio.name, portfolio %></li>
+<li>
+  <div class="avatar">
+  <%= image_tag(portfolio.user.avatar.tiny.url) if portfolio.user.avatar? %></div>
+  <div class="author"><%= portfolio.user.name %></div>
+<div class"date">submitted <%= time_ago_in_words(portfolio.created_at) %>
+</div class="portfolio"><%= link_to portfolio.name, portfolio %></li>
 <% end %>
 <%= will_paginate @portfolios %>
 </ul>

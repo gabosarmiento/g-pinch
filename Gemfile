@@ -53,6 +53,10 @@ gem 'state_machine'
 gem 'whenever', :require => false
 gem 'stripe', '~> 1.11.0'
 gem 'paper_trail', '~> 3.0.1'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
+gem 'unf'
 
 #gem from tutorial to generate pdfs from html
 gem 'docverter'

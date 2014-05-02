@@ -1,4 +1,6 @@
-<h1><%= @user.name %></h1>
+<h1><%= image_tag(@user.avatar.url) if @user.avatar? %>
+  <%= @user.name %>
+</h1>
 <h2>Some cool things go here</h2>
 
 <div>
