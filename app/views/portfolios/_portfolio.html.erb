@@ -1,5 +1,5 @@
-<li>
-<span><%= link_to portfolio.name, portfolio,  id: "#{portfolio.id}" %></span>
+<li class="portfolio_<%= portfolio.id%>">
+<span><%= link_to portfolio.name, portfolio,  id: "#{portfolio.id}", remote: true %></span>
 <% if portfolio.public == true %>
 <span class="label label-success pull-right">public</span>
 <% else %>

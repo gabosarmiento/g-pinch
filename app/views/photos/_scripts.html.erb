@@ -1,0 +1,39 @@
+<!-- Photo scripts start here -->
+
+<script>
+$(function() {
+  $('.switch').bootstrapSwitch();
+});
+</script>
+<script id="template-upload" type="text/x-tmpl"><div class="upload">uploading {%=o.name%}<div class="progress progress-striped active"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div></div></div></script>
+<script>
+$(document).bind('dragover', function (e) {
+    var dropZone = $('#dropzone'),
+        timeout = window.dropZoneTimeout;
+    if (!timeout) {
+        dropZone.addClass('in');
+    } else {
+        clearTimeout(timeout);
+    }
+    var found = false,
+        node = e.target;
+    do {
+        if (node === dropZone[0]) {
+            found = true;
+            break;
+        }
+        node = node.parentNode;
+    } while (node != null);
+    if (found) {
+        dropZone.addClass('hover');
+    } else {
+        dropZone.removeClass('hover');
+    }
+    window.dropZoneTimeout = setTimeout(function () {
+        window.dropZoneTimeout = null;
+        dropZone.removeClass('in hover');
+    }, 100);
+});
+
+</script>
+<!-- Photo scripts end here -->

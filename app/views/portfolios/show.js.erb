@@ -1,0 +1,47 @@
+if($('.js-new-portfolios-photos').length) {
+  $('#new_photo').remove(); 
+  $('#dropzone').remove();
+}
+if($('.jcarousel-ul').length) {
+  $('.js-photo-count').remove();
+  $('.js-photo-show').append("<span class='badge pull-right'><span class='js-photo-count'><%= @photos.count %></span></span>");
+  $('.jcarousel-ul').html("<%= escape_javascript(render partial: 'photos/photo', collection: @photos)  %>");
+}
+else {
+  var html = "<ul class='jcarousel-ul'>" +  "<%= escape_javascript(render partial: 'photos/photo', collection: @photos)  %>" + '</ul>';
+   $('.jcarousel').html(html);
+   $('.js-wrapper').append("<a href='' class='jcarousel-control-prev' data-jcarouselcontrol='true'>‹</a>");
+   $('.js-wrapper').append("<a href='' class='jcarousel-control-next' data-jcarouselcontrol='true'>›</a>");
+   $('.js-photo-show').append("<span class='badge pull-right'><span class='js-photo-count'><%= @photos.count %></span></span>");
+}
+
+$(function() {
+    var jcarousel = $('.jcarousel');
+
+    jcarousel
+        .on('jcarousel:reload jcarousel:create', function () {
+            var width = jcarousel.innerWidth();
+
+            if (width >= 600) {
+                width = width / 3;
+            } else if (width >= 350) {
+                width = width / 2;
+            }
+
+            jcarousel.jcarousel('items').css('width', width + 'px');
+        })
+        .jcarousel({
+            wrap: 'circular'
+        });
+
+    $('.jcarousel-control-prev')
+        .jcarouselControl({
+            target: '-=1'
+        });
+
+    $('.jcarousel-control-next')
+        .jcarouselControl({
+            target: '+=1'
+        });
+});
+

@@ -1,0 +1,5 @@
+<%= form_for [portfolio, photo], :html => {multipart: true} do |f| %>
+  <%= f.label :image, "Upload photos:" %>
+  <%= f.file_field :image, multiple: true, name: "photo[image]" %>
+  <% end %>
+

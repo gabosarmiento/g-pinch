@@ -57,6 +57,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'unf'
+gem 'jquery-turbolinks'
+gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 
 #gem from tutorial to generate pdfs from html
 gem 'docverter'

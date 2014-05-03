@@ -1,0 +1,5 @@
+<% if @photo.new_record? %>
+alert("Failed to upload painting: <%= j @photo.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+  $(".jcarousel").prepend("<%= j render partial: 'photos/photo', locals: { portfolio: @portolio, photo: @photo } %>");
+<% end %> 

@@ -3,11 +3,12 @@ class PhotoPolicy < ApplicationPolicy
     true
   end 
   def show? 
-    record.public? || (record.user == user || user.role?(:admin))
+    update?
   end
 
-  def create?
-    user.present? && (record.user == user || user.role?(:admin))
+  def update?
+    user.present? && (record.portfolio.user == user || user.role?(:admin) || user.is_his_job?(record.portfolio))
   end
-  
+
+
 end

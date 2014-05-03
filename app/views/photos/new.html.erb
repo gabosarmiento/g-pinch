@@ -1,2 +1,12 @@
-<h1>Photos#new</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
+<h1>New Photo</h1>
+<div id="photos">
+  <%= render @photos %>
+</div>
+
+<div class="clear"></div>
+
+<div class="panel panel-default">
+  <%= render partial: '/photos/form', locals: { portfolio: @portfolio, photo: @photo } %>
+</div>
+
+<script id="template-upload" type="text/x-tmpl"><div class="upload">uploading {%=o.name%}<div class="progress progress-striped active"><div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div></div></div></script>

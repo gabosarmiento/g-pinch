@@ -11,10 +11,14 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.ui.all
 //= require bootstrap
 //= require bootstrap-switch
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+//= require turbolinks
 //= require_tree .
 
 $(document).ready(function(){

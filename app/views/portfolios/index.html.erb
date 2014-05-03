@@ -14,10 +14,11 @@
             <li><%= link_to portfolio.name, jobs_path %><span class="badge pull-right"><%= portfolio.jobs.where(portfolio_id: portfolio.id).count %></span>
             </li>
             <% end %>
-          <% end %>
+            <% end %>
+            </ul>
           </div>
         </div>
-      </div>
+      </div><!-- panel -->
     </div>
     <div class="row">
       <div class="panel panel-default">
@@ -45,8 +46,8 @@
         </div>
         <% end %>
       </div>
-    </div>
-  </div>
+    </div><!-- row -->
+  </div><!-- col-sm-3-->
   <div class="col-sm-9">
     <% if policy(@portfolio).create? %>
     <div class="row">
@@ -57,26 +58,26 @@
     <% end %> 
     <div class="row">
       <div class="col-sm-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-          Photos
-          </div>
-          <div class="panel-body">
-              <div class="js-portfolios-photos">
-                
-              </div>
-          </div>
+      <div class="panel panel-default">
+        <div class="panel-heading js-photo-show">
+          <i class="fa fa-camera"></i><span class="break"></span> Photos
         </div>
+        <div class="panel-body">
+          <div class="js-new-portfolios-photos">
+          </div>
+          <div class="js-wrapper">
+            <div class="js-action-show jcarousel" data-jcarousel="true">
+            </div>
+          </div>
+          
+        </div>
+      </div><!-- /panel -->
       </div>
-    </div>
-  </div>
-</div>
+    </div><!-- /row -->
+  </div><!-- col -->
+</div><!-- /row -->
 
-<script>
-var ready;
-ready = function() { 
-    $('.switch').bootstrapSwitch();
-};
-$(document).ready(ready);
-$(document).on('page:load', ready);
-</script>
+<%= render 'photos/scripts' %>
+
+
+<%= javascript_include_tag 'jquery.jcarousel' %>

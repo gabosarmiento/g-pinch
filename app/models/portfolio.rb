@@ -21,7 +21,7 @@ class Portfolio < ActiveRecord::Base
   scope :visible, -> { where(public: true) }
   default_scope { order('created_at DESC') }
   scope :under_revision, -> { with_state(:commissioned) }
-
+  accepts_nested_attributes_for :photos, allow_destroy: true
   def self.names
     pluck(:name)
   end

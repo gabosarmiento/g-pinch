@@ -4,14 +4,19 @@ class PortfoliosController < ApplicationController
     @portfolios = current_user.portfolios
     @portfolio = Portfolio.new
     @commissioned = current_user.portfolios.under_revision
+    @photos = Photo.new
     authorize @portfolio
   end
 
   def show
     @portfolio = Portfolio.find(params[:id])
-    @judges = User.where(role: "judge")
-    @job = @portfolio.jobs.new
+    @photos = @portfolio.photos
+    @photo = Photo.new
     authorize @portfolio
+    respond_to do |format|
+      format.js
+      format.html 
+    end
   end
 
   def new
@@ -22,14 +27,11 @@ class PortfoliosController < ApplicationController
 
   def create
     @portfolios = current_user.portfolios
-    @portfolio = current_user.portfolios.new(portfolio_params)
+    @portfolio = current_user.portfolios.create(portfolio_params)
     @new_portfolio = current_user.portfolios.new
+    @photos = @portfolio.photos
+    @photo = Photo.new
     authorize @portfolio
-    if @portfolio.save
-      respond_with(@portfolio) do |format|
-        format.html { redirect_to portfolios_path}
-      end
-    end
   end
 
   def update
@@ -46,6 +48,6 @@ class PortfoliosController < ApplicationController
 
   private 
   def portfolio_params 
-    params.require(:portfolio).permit(:name, :needs, :public )
+    params.require(:portfolio).permit(:name, :needs, :public, photos_attributes: [:title, :description, :image, :adult, :exif, :category, :portfolio_id] )
   end
 end
