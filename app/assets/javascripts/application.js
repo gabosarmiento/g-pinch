@@ -14,6 +14,9 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
+//= require jquery.mousewheel
+//= require imgViewer
+//= require imgNotes
 //= require bootstrap
 //= require bootstrap-switch
 //= require jquery-fileupload/basic

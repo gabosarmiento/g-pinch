@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140502043902) do
+ActiveRecord::Schema.define(version: 20140503153747) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(version: 20140502043902) do
   end
 
   add_index "photos", ["portfolio_id"], name: "index_photos_on_portfolio_id"
+
+  create_table "pinches", force: true do |t|
+    t.text     "opinion"
+    t.string   "pinch"
+    t.integer  "position"
+    t.integer  "job_id"
+    t.integer  "photo_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pinches", ["job_id"], name: "index_pinches_on_job_id"
+  add_index "pinches", ["photo_id"], name: "index_pinches_on_photo_id"
 
   create_table "portfolios", force: true do |t|
     t.string   "name"

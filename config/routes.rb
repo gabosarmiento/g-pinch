@@ -1,4 +1,6 @@
 GPinch::Application.routes.draw do
+  # Showing reviews
+  get "jobs/:job_id/review/:photo_id", to: "jobs#review", as: :show_review
   # stripe events
   resources :stripe_events, only: [:create]
   #sales with stripe
@@ -25,7 +27,9 @@ GPinch::Application.routes.draw do
   end
   resources :profile, only: [:index, :show, :update, :destroy]
   
-  resources :jobs, only: [:index, :new, :show, :create, :destroy]
+  resources :jobs, only: [:index, :new, :show, :create, :destroy] do 
+    resources :pinches, only: [:create, :destroy]
+  end
   # Change root path if user is authenticated
   authenticated :user do
     root to: "jobs#index", :as => "authenticated_root"

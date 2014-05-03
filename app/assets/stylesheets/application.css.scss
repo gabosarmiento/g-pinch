@@ -448,3 +448,23 @@ p {
     -moz-box-shadow: 0 0 2px #F0EFE7;
     box-shadow: 0 0 2px #F0EFE7;
 }
+
+/* marker */ 
+
+.marker{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: -13px;
+  top: -35px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 30px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #fff;
+}
+  
+.marker.black{
+  background: url(marker.png);
+}

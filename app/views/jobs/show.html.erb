@@ -62,7 +62,7 @@
           <tr><td>job status</td><td><%= render 'states_in_show'%></td></tr>
           <tr><td>date of creation</td><td><%= (@job.created_at).strftime('%a %b %d')
            %></td></tr>
-           <tr><td>Pinches</td><td>goes here</td></tr>
+           <tr><td>Pinches</td><td><%= render partial: 'review', locals: {job: @job} %></td></tr>
         </tbody>
       </table>
     </div>

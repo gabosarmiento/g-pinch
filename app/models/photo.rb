@@ -14,13 +14,13 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #
-# call for File Size Validator from /lib 
+
 require 'file_size_validator'
 class Photo < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :portfolio
   has_many :comments, as: :commentable
-  
+  has_many :pinches
   #before create assign a name
   before_create :default_name
   validates :portfolio, presence: true

@@ -12,6 +12,7 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @portfolios = current_user.portfolios.under_revision
+    
   end
 
   def create
@@ -43,6 +44,14 @@ class JobsController < ApplicationController
 
   def destroy
   end
+
+  #Photo pinching review
+  def review
+    @job = Job.find(params[:job_id])
+    @photo = Photo.find(params[:photo_id])
+    @pinch = @job.pinches.new 
+  end
+ 
 
   #State machine actions
   def view

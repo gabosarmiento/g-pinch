@@ -1,0 +1,4 @@
+
+<% job.portfolio.photos.each do |photo| %>
+<span><%= link_to "review-#{photo.id}", show_review_path(job, photo.id) %></span>
+<% end %>

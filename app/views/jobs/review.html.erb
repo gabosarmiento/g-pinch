@@ -1,0 +1,56 @@
+<div id="imgdiv">
+  <%= image_tag @photo.image.normal.url, class: "img-responsive", id: "image" %>
+</div>
+
+<button id="toggleEdit">Edit</button>
+<button id="export">Export</button>
+
+Pinches over a photo but for now they go here 
+<% form_id = "opinion-for-photo" %>
+<%= form_for [@job,@pinch], html: {id: "opinion-for-photo"} do |f| %>
+  <%= f.hidden_field :pinch, :id => "pinch" %>
+  <%= f.hidden_field :photo_id, :value => @photo.id %>
+<% end %>
+<br>
+<div id="txt"></div>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" media="screen">
+
+<script type="text/javascript">
+;(function($) {
+  $(document).ready(function() {
+  var $img = $("#image").imgNotes();
+  var $toggle = $("#toggleEdit");
+    if ($img.imgNotes("option","canEdit")) {
+      $toggle.text("View");
+    } else {
+      $toggle.text("Edit");
+  }
+  $toggle.on("click", function() {
+    var $this = $(this);
+    if ($this.text()=="Edit") {
+      $this.text("View");
+      $img.imgNotes("option", "canEdit", true);
+    } else {
+      $this.text('Edit');
+      $img.imgNotes('option', 'canEdit', false);
+    }
+  });
+    
+    var $export = $("#export");
+    $export.on("click", function() {
+      var notes = $img.imgNotes('export');
+      var pinch_selector = '#pinch'; 
+      var form_selector = "#opinion-for-photo";
+      $.each(notes, function(index, item) {
+        var pinch = '{x:' + "'" + item.x + "'"+ ', y:' + "'" +item.y+ "'"+', note:'+ "'"+ item.note+"'"+'}';
+        $(pinch_selector).val(pinch);
+        $.ajax({
+          type: "POST",
+          url: $(form_selector).attr('action'),
+          data: $(form_selector).serialize()
+        });
+      });
+    });
+  });
+})(jQuery);
+</script>
