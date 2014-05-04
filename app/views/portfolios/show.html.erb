@@ -8,13 +8,14 @@ Hire a professional to review this portfolio
 <% else %>
 Pinch it!
 <% end %>
-
+<% if policy(@portfolio).create? %>
 <div class="panel panel-default">
   <%= render partial: 'photos/form', locals: { portfolio: @portfolio, photo: @photo } %>
    <div id="dropzone" class="fade well">
     <p>Drop files here</p>
    </div>
 </div>
+<% end %>
 <div id="photos">
 <%= render @photos || "There are no photos available."%>
 </div>
