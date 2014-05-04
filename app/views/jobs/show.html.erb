@@ -1,4 +1,12 @@
 <div class="row">
+  <div class="col-sm-12">
+  <ol class="breadcrumb">
+    <li><%= link_to "Job", jobs_path %></li>
+    <li class="active"><%= "Job #{@job.id}" %></li>
+  </ol>
+  </div>
+</div>
+<div class="row">
     <div class="col-sm-3">
     <div class="panel panel-default">
       <div class="panel-heading">

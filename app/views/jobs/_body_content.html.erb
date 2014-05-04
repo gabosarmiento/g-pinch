@@ -1,9 +1,9 @@
 <% @jobs.each do |job| %>
 <tr>
-  <td><%# image_tag( job.portfolio.user.avatar.small.url ) if job.portfolio.user.avatar?  %>
-    <%= link_to job.portfolio.user.name, job.portfolio.user %>
+  <td class="text-center" style="vertical-align:middle"><%= link_to job.id, job %></td>
+  <td><%= image_tag( job.portfolio.user.avatar.small.url ) if job.portfolio.user.avatar?  %>
+    <%= job.portfolio.user.name.to_s.humanize.titleize %>
   </td>
-  <td class="text-center" style="vertical-align:middle"><%= link_to job.portfolio.name, job.portfolio %></td>
   <td class="text-center" style="vertical-align:middle"><%= job.portfolio.photos.count %></td>
   <td class="text-center" style="vertical-align:middle">
     <% case job.state %>
@@ -38,9 +38,9 @@
         <i class="fa fa-ban "></i>
         <% end %>
         <% when 'active' %>
-        <%# link_to job_pinches_path(job), class: "btn btn-info", data: {rel: "tooltip", title: "Start to pinch"} do %>
+        <%= link_to show_review_path(job, job.portfolio.photos.first), class: "btn btn-info", data: {rel: "tooltip", title: "Start to pinch"} do %>
         <i class="fa fa-thumb-tack"></i>
-        <%# end %>
+        <% end %>
 
         <%= link_to complete_job_path(job), class: "btn btn-primary", data: {rel: "tooltip", title: "Mark as complete"} do %>
         <i class="fa fa-check"></i>

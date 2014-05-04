@@ -14,6 +14,9 @@
           <li><%= link_to "experts", profile_index_path%>
           </li>
           <li><%= link_to "explore", gallery_path %></li>
+          <% if current_user.role == "admin" %>
+          <li><%= link_to "sales", sales_path %></li>
+          <% end %>
         </ul>
         <% end %>
         <!-- <ul class="nav-bar nav-center">

@@ -1,11 +1,21 @@
-<h1>list of professionals available</h1>
-<% unless @profiles.empty? %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Professionals available</h4>
+  </div>
+  <div class="panel-body">
+    <% unless @profiles.empty? %>
    <% @profiles.each do |profile| %>
-   <div>
-      <%= image_tag(profile.user.avatar.profile.url) if profile.user.avatar? %>
-      <%= link_to profile.user.name.to_s.humanize, profile %>
+   <div class="col-sm-2">
+      <%= image_tag(profile.user.avatar.profile.url, class: "img-responsive") if profile.user.avatar? %>
+      <p><%= link_to profile.user.name.to_s.humanize, profile %></p>
     </div>
    <% end %>
 <% else %>
 This can't be empty
 <% end %>
+  </div>
+</div>
+
+
+
+
