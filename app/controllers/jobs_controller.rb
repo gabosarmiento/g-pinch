@@ -49,7 +49,8 @@ class JobsController < ApplicationController
   def review
     @job = Job.find(params[:job_id])
     @photo = Photo.find(params[:photo_id])
-    @pinch = @job.pinches.new 
+    @pinch = Pinch.new 
+    @pinches = @job.pinches.where(:photo_id => params[:photo_id]).paginate(page: params[:page], per_page: 5)
   end
  
 

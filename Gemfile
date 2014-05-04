@@ -60,6 +60,7 @@ gem 'unf'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 gem 'jquery-fileupload-rails'
+gem 'acts_as_list'
 
 #gem from tutorial to generate pdfs from html
 gem 'docverter'

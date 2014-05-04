@@ -1,6 +1,8 @@
+@import "bootstrap-custom";
 @import "bootstrap";
 @import "font-awesome";
 @import "bootstrap3-switch";
+
 /* universal */
 
 html {
@@ -27,7 +29,11 @@ textarea {
     margin-bottom: 10px;
   }
 }
-
+/* container */
+ 
+ .container-fluid {
+   margin-top: 20px;
+ }
 /* navigation bar */
 .nav {
   position: relative;
@@ -468,3 +474,7 @@ p {
 .marker.black{
   background: url(marker.png);
 }
+
+/* Pagination */
+
+

@@ -1,8 +1,9 @@
 class CreatePinches < ActiveRecord::Migration
   def change
     create_table :pinches do |t|
-      t.text :opinion
-      t.string :pinch
+      t.string :note
+      t.float :x
+      t.float :y
       t.integer :position
       t.references :job, index: true
       t.references :photo, index: true

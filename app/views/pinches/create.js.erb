@@ -1,0 +1,4 @@
+<% if @pinch.valid? %>
+  $(".js-pinch").prepend("<%= j render partial: 'pinches/pinch', locals: { job: @job, pinch: @pinch } %>");
+<% end %>
+

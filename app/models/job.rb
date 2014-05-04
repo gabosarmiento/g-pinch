@@ -16,7 +16,7 @@ class Job < ActiveRecord::Base
   belongs_to :portfolio
   belongs_to :user
   has_many :sales
-  has_many :pinches
+  has_many :pinches, -> { order("position ASC") }, dependent: :destroy
   default_scope { order('created_at DESC') }
   scope :accepted_jobs, -> { with_state(:active) }
   scope :unresponded_jobs, -> { with_state(:inactive) }
@@ -25,6 +25,7 @@ class Job < ActiveRecord::Base
   validates_numericality_of :price_cents,
     greater_than: 49,
     message: "must be at least 50 cents"
+
 #state machine definitions
   state_machine initial: :created do
     event :purchase do

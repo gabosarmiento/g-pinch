@@ -1,56 +1,61 @@
-<div id="imgdiv">
-  <%= image_tag @photo.image.normal.url, class: "img-responsive", id: "image" %>
+<div class="col-sm-12">
+<div class="row">
+  <div class="col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Photo
+      </div>
+        <div class="panel-body">
+          <div class="col-sm-12">
+             <%= image_tag @photo.image.normal.url, class: "img-responsive", id: "image" %>
+          </div>
+        </div>
+        <div class="panel-footer text-center">
+          <button id="save">Save</button>
+        </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      Opinions
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-12 js-pinch">
+           <%= render @pinches %>
+           <%= will_paginate @pinches %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
-<button id="toggleEdit">Edit</button>
-<button id="export">Export</button>
-
-Pinches over a photo but for now they go here 
-<% form_id = "opinion-for-photo" %>
-<%= form_for [@job,@pinch], html: {id: "opinion-for-photo"} do |f| %>
-  <%= f.hidden_field :pinch, :id => "pinch" %>
-  <%= f.hidden_field :photo_id, :value => @photo.id %>
-<% end %>
-<br>
-<div id="txt"></div>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" media="screen">
-
-<script type="text/javascript">
-;(function($) {
-  $(document).ready(function() {
+<script>
+$(document).ready(function() {
   var $img = $("#image").imgNotes();
-  var $toggle = $("#toggleEdit");
-    if ($img.imgNotes("option","canEdit")) {
-      $toggle.text("View");
-    } else {
-      $toggle.text("Edit");
-  }
-  $toggle.on("click", function() {
-    var $this = $(this);
-    if ($this.text()=="Edit") {
-      $this.text("View");
-      $img.imgNotes("option", "canEdit", true);
-    } else {
-      $this.text('Edit');
-      $img.imgNotes('option', 'canEdit', false);
-    }
-  });
-    
-    var $export = $("#export");
-    $export.on("click", function() {
-      var notes = $img.imgNotes('export');
-      var pinch_selector = '#pinch'; 
-      var form_selector = "#opinion-for-photo";
-      $.each(notes, function(index, item) {
-        var pinch = '{x:' + "'" + item.x + "'"+ ', y:' + "'" +item.y+ "'"+', note:'+ "'"+ item.note+"'"+'}';
-        $(pinch_selector).val(pinch);
+
+  $img.imgNotes({canEdit: true});
+  var $export = $("#save");
+  var $img = $("#image").imgNotes();
+  var link = "<%= job_pinches_path(@job) %>";
+  var photo_id = "<%= @photo.id %>";
+  var job_id = "<%= @job.id %>";
+  $export.on("click", function() {
+    $img.imgNotes({canEdit: false});
+    var $notes = $img.imgNotes('export'); 
+    $img.imgNotes('clear');
+    $img.imgNotes({canEdit: true});
+      $notes.forEach(function(item) {
         $.ajax({
           type: "POST",
-          url: $(form_selector).attr('action'),
-          data: $(form_selector).serialize()
-        });
+          url: link,
+          data: {'pinch':item, 'photo_id':photo_id, 'job_id':job_id }
+        });         
       });
     });
-  });
-})(jQuery);
+});
 </script>
+<% content_for :header do %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" media="screen">
+<% end %>
