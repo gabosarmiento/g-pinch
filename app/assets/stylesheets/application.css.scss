@@ -475,6 +475,54 @@ p {
   background: url(marker.png);
 }
 
-/* Pagination */
+/* Portfolios */
 
+.portfolios .media-body .portfolio {
+  border-bottom: 1px solid #e1e6ef;
+  margin: 20px -10px 0px -10px;
+  padding: 20px;
+  font-size: 12px;
+}
 
+.portfolios .media-body ul li ul li {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid #e1e6ef;
+  margin: 0 -10px;
+  padding-left: 70px;
+}
+
+.portfolios .media-body ul li ul li:before {
+  display: none;
+}
+
+.portfolios .media-body ul li ul li:last-child {
+  border-bottom: none;
+}
+
+.portfolios .media-body ul li ul li .avatar {
+  top: 10px;
+  left: 10px;
+}
+
+.portfolios .media-body ul li ul li .avatar img {
+  height: 40px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.portfolios .media-body ul li ul li .name {
+  left: 70px;
+}
+
+.portfolios .media-body ul li ul li .date {
+  background: transparent;
+  right: 30px;
+}
+
+.portfolios .media-body ul li ul li .photos {
+  border-bottom: none;
+}

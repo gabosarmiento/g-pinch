@@ -1,22 +1,25 @@
-<ul>
-<% @portfolios.each do |portfolio| %>
-<div class="media">
-<div class="media-heading">
-  <div class="avatar">
-  <%= image_tag(portfolio.user.avatar.tiny.url) if portfolio.user.avatar? %></div>
-  <div class="author"><%= portfolio.user.name %></div>
-<div class"date">submitted <%= time_ago_in_words(portfolio.created_at) %>
-</div class="portfolio"><%= link_to portfolio.name, portfolio %>
-</div>
+<ul class="portfolios">
 <div class="media-body">
-    <div></div>
-    <ul>
+  <% @portfolios.each do |portfolio| %>
+  <li>
+    <div class="avatar">
+    <%= image_tag(portfolio.user.avatar.tiny.url) if portfolio.user.avatar? %>
+    </div>
+    <div class="name">
+      <%= portfolio.user.name %> submitted <%= link_to portfolio.name, portfolio %>
+    </div>
+    <div class="date">
+      <%= time_ago_in_words(portfolio.created_at) %>
+    </div>
+    <div class="photos row">
       <% portfolio.photos.each do |photo| %>
-        <li><%= link_to image_tag(photo.image.thumb.url), [photo.portfolio, photo], {class: "img-thumbnail"}%> </li>
+      <div class="col-sm-3 col-xs-6">
+        <%= link_to image_tag(photo.image.thumb.url), [photo.portfolio, photo], {class: "img-thumbnail"}%>
+      </div>
       <% end %>
-    </ul>
+    </div>
+  </li>
+  <% end %>
 </div>
-</div>
-<% end %>
 <%= will_paginate @portfolios %>
 </ul>
