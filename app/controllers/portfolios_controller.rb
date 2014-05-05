@@ -5,8 +5,7 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
     @commissioned = current_user.portfolios.under_revision
     @photos = Photo.new
-    @validation_portfolio = current_user.portfolios.new
-    authorize @validation_portfolio
+    authorize @portfolio
   end
 
   def show

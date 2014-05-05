@@ -1,7 +1,8 @@
 class JobsController < ApplicationController
   def index
     @jobs = Job.where(user_id: current_user.id)
-     @portfolios = current_user.portfolios.under_revision
+    @portfolios = current_user.portfolios.under_revision
+    @sales_balance = Sale.closed_sales.where(job_id: @jobs).sum(:amount)
   end
   def new
     @portfolios = current_user.portfolios

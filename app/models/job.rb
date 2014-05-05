@@ -18,9 +18,9 @@ class Job < ActiveRecord::Base
   has_many :sales
   has_many :pinches, -> { order("position ASC") }, dependent: :destroy
   default_scope { order('created_at DESC') }
-  scope :accepted_jobs, -> { with_state(:active) }
+  scope :current_jobs, -> { with_state(:active) }
   scope :unresponded_jobs, -> { with_state(:inactive) }
-  scope :completed, -> { with_state(:finished) }
+  scope :completed, -> { with_state(:completed) }
 
   validates_numericality_of :price_cents,
     greater_than: 49,
@@ -45,7 +45,7 @@ class Job < ActiveRecord::Base
       transition :new => :inactive
     end
     event :complete do
-      transition :active => :finished
+      transition :active => :completed
     end
   end
 

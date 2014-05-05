@@ -11,8 +11,8 @@
     <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
       <div class="smallstat">
         <i class=" fa-thumb-tack white"></i>
-        <span class="value"> - </span>
-        <span class="title">Jobs accepted</span>
+        <span class="value"> <%= current_user.jobs.current_jobs.count %></span>
+        <span class="title">Current Jobs</span>
       </div>
     </div>
     <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
@@ -25,8 +25,8 @@
     <div class="col-lg-3 col-sm-6 col-xs-6 col-xxs-12">
       <div class="smallstat">
         <i class="fa-bitcoin white"></i>
-        <span class="value">$ 0</span>
-        <span class="title">Balance</span>
+        <span class="value"><%= formatted_price(@sales_balance) %></span>
+        <span class="title">Sales</span>
       </div>
     </div>
    

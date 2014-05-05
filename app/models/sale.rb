@@ -21,7 +21,7 @@ class Sale < ActiveRecord::Base
   has_paper_trail
   belongs_to :job
   before_create :populate_guid
-
+  scope :closed_sales, -> { with_state(:finished) }
   state_machine initial: :pending do
 
     event :process do 
