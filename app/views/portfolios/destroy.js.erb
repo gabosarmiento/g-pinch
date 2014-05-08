@@ -1,0 +1,7 @@
+<% if @portfolio.destroyed? %>
+$('.portfolio_' + <%= @portfolio.id %>).hide();
+ // $('.js-portfolios').prepend("<div class='alert alert-success'><%= flash[:success] %></div>");
+ // $('.alert').fadeOut(2000);
+<% else %>
+  $('.portfolio_' + <%= @portfolio.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>

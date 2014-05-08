@@ -30,7 +30,7 @@
           title: "Pinch",
           resizable: false,
           modal: true,
-          height: "300",
+          height: "200",
           width: "350",
           position: { my: "left bottom", at: "right top", of: elem},
           buttons: {

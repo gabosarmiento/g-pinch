@@ -30,9 +30,9 @@
         <div class="panel-body">
           <div class="col-sm-12">
             <!-- user portfolios list -->
-            <ul class="js-portfolios">
+            <div class="js-portfolios">
             <%= render @portfolios %>
-            </ul>
+            </div>
             </div>
         </div>
         <% else %>
@@ -79,5 +79,14 @@
 
 <%= render 'photos/scripts' %>
 
-
 <%= javascript_include_tag 'jquery.jcarousel' %>
+
+<script type="text/javascript">
+$(document).ready(function (e) {
+    $(".hover").hover(function (e) {
+        $(this).find('.hovsw').show();
+    }, function (e) {
+        $(this).find('.hovsw').hide();
+    });
+  });
+</script>

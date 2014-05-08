@@ -43,7 +43,6 @@
 <script>
 $(document).ready(function() {
   var $img = $("#image").imgNotes();
-
   $img.imgNotes({canEdit: true});
   var $export = $("#save");
   var $img = $("#image").imgNotes();
@@ -65,6 +64,20 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<% @pinches.each do |pinch| %>
+<script>
+   var $img = $("#image").imgNotes();
+   var equis = '<%= pinch.x %>';
+   var ye = '<%= pinch.y %>';
+   var nota = '<%= pinch.note %>';
+   var eqs = { 'x':equis, 'y':ye, 'note':nota  };
+   var test = JSON.stringify(eqs);
+  console.log(eqs);
+  $img.imgNotes('import', [eqs]);
+</script>
+<% end %>
+
 <% content_for :header do %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" media="screen">
 <% end %>
