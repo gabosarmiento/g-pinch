@@ -11,6 +11,8 @@
 #  website    :string(255)
 #  header     :string(255)
 #  pic        :string(255)
+#  separator  :string(255)
+#  footer     :string(255)
 #  bio        :text
 #  experience :text
 #  title      :string(255)
@@ -19,6 +21,9 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
   mount_uploader :pic, PicUploader
+  mount_uploader :header, HeaderUploader
+  mount_uploader :separator, SeparatorUploader
+  mount_uploader :footer, FooterUploader
   scope :approved, -> {with_state(:approved)}
   state_machine initial: :incomplete do 
     event :verification do 

@@ -1,9 +1,13 @@
 <section id="home" name="home"></section>
-  <div id="headerwrap">
+  <% if @profile.header? %>
+  <div id="headerwrap" style="background: url(<%= @profile.header.normal.url %>) no-repeat center top;">
+  <% else %>
+   <div id="headerwrap" style="background: url(<%= @profile.header.default_url %>) no-repeat center top;">
+  <% end %>
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <h1> <%= @user.role %></h1>
+          <h1> <%= @profile.user.name %></h1>
         </div>
       </div><! --/row -->
     </div><! --/container -->
@@ -21,6 +25,18 @@
           <% end %>
           <p><%= @user.name %></p>
           <div class="name-label"></div>
+          <div class="col-sm-12 text-center">
+            <a href="#" class="js-show-hide btn btn-default" data-selector="js-hire"><h3> Hire Me Now!</h3></a>
+          </div>
+          <div class="js-hire hide">
+            <% if @portfolios.empty? %>
+            <p>First <%= link_to "create", portfolios_path %> a portfolio</p>
+            <% else %>
+            <div class="col-sm-12 text-center">
+             <%= render partial: "/jobs/form", locals: {portfolios: @portfolios, job: @job, judge: @profile.user} %>
+            </div>
+            <% end %>
+          </div>
         </div><! --/col-lg-4-->
         <div class="col-lg-8 name-desc">
           <h2><%= @profile.title %></h2>
@@ -40,8 +56,11 @@
   </div><!-- /aboutwrap -->
   
   <! -- ABOUT SEPARATOR -->
-  <div class="sep about" data-stellar-background-ratio="0.5"></div>
-
+  <% if @profile.separator? %>
+  <div class="sep about" data-stellar-background-ratio="0.5" style="background-image: url(<%= @profile.separator.normal.url %>);"></div>
+  <% else %>
+  <div class="sep about" data-stellar-background-ratio="0.5" style="background-image: url(<%=  @profile.separator.default_url %>);"></div>
+  <% end %>
   <! -- PORTFOLIO SECTION -->
   <section id="portfolio" name="portfolio"></section>
   <div id="portfoliowrap">
@@ -52,28 +71,38 @@
     </div><! --/container -->
   </div><! --/Portfoliowrap -->
 
-  <! -- PORTFOLIO SEPARATOR -->
-  <div class="sep portfolio" data-stellar-background-ratio="0.5"></div>
+  <! -- FOOTER SEPARATOR -->
+  <% if @profile.footer? %>
+  <div class="sep portfolio" data-stellar-background-ratio="0.5" style="background-image: url(<%= @profile.footer.normal.url %>);"></div>
+  <% else %>
+   <div class="sep portfolio" data-stellar-background-ratio="0.5" style="background-image: url(<%= @profile.footer.default_url %>);"></div>
+  <% end %>
 
-
-
-
-
-<h1><%= image_tag(@user.avatar.url) if @user.avatar? %>
-  <%= @user.name %>
-</h1>
-<h2>Some cool things go here</h2>
-
-<div>
-</div>
-<div class="col-sm-12 text-center">
-    <a href="#" class="js-show-hide btn btn-default" data-selector="js-hire"><h3> Hire Me Now!</h3></a>
+  <div id="contactwrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <p>INTERESTED IN HIRING <%= @profile.user.name %>?</p>
+        </div>
+        
+        <!-- <div class="col-lg-6">
+          <form role="form">
+            <div class="form-group">
+              <label for="exampleInputName1">Your Name</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <label for="exampleInputText1">Message</label>
+              <textarea class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div> -->
+      
+      </div><! --/row -->
+    </div><!-- /container -->
   </div>
-<div class="js-hire hide">
-  <div class="col-sm-12 text-center">
-   <%= render partial: "/jobs/form", locals: {portfolios: @portfolios, job: @job, judges: @judges} %>
- </div>
-</div>
+
 <script>
 $(".js-show-hide").click(function() {
     var selector = "." + $(this).attr('data-selector');

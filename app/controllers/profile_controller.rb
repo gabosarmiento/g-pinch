@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   def index
-    @profiles = Profile.all
+    @profiles = Profile.all.approved
   end
 
   def show

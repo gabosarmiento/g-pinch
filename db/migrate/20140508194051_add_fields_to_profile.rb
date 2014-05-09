@@ -4,6 +4,8 @@ class AddFieldsToProfile < ActiveRecord::Migration
     add_column :profiles, :website, :string
     add_column :profiles, :header, :string
     add_column :profiles, :pic, :string
+    add_column :profiles, :separator, :string
+    add_column :profiles, :footer, :string
     add_column :profiles, :bio, :text
     add_column :profiles, :experience, :text
     add_column :profiles, :title, :string

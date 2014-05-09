@@ -37,7 +37,8 @@ textarea {
 /* container */
  
  .container-fluid {
-   margin-top: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
  }
 /* navigation bar */
 .nav {
@@ -239,6 +240,7 @@ p {
 }
 
 /* Panels*/
+
 
 .panel-heading {
   padding: 5px 15px;
@@ -562,13 +564,12 @@ p {
 }
 
 #headerwrap {
-  background: url(../img/back.jpg) no-repeat center top;
   margin-top: 0px;
   padding-top:120px;
   text-align:center;
   background-attachment: relative;
   background-position: center center;
-  min-height: 700px;
+  min-height: 600px;
   width: 100%;
   
     -webkit-background-size: 100%;
@@ -641,7 +642,7 @@ p {
   position: relative;
 }
 .about {
-  background-image: url(about-sep.jpg);
+ 
 }
 
 /* Portfolio Wrap Section */
@@ -680,7 +681,6 @@ p {
 }
 
 .portfolio {
-  background-image: url(portfolio-sep.jpg);
 }
 
 /* Service Wrap */
@@ -741,7 +741,7 @@ p {
 }
 
 .contact {
-  background-image: url(contact-sep.jpg);
+
 }
 
 #contactwrap label {
