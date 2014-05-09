@@ -10,11 +10,19 @@ class ProfileController < ApplicationController
     @judges = User.where(:role => "judge")
     @price = User::PRICE
     @job = Job.new
+    authorize @profile 
   end
 
   def update
+    @profile = current_user.profile
+    authorize @profile 
   end
 
   def destroy
+  end
+
+  private
+  def profile_params
+    params.require(:profile)
   end
 end
