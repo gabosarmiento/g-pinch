@@ -3,7 +3,7 @@
     <div class="col-sm-12">
     <ol class="breadcrumb">
       <li><%= link_to "Job", @job %></li>
-      <li class="active"><%= "Reviewing #{params[:photo_id]}" %></li>
+      <li class="active"><%= "Reviewing photo #{params[:photo_id]}" %></li>
     </ol>
     <small><%= render partial: 'review', locals: {job: @job} %></small>
     </div>
@@ -32,7 +32,6 @@
       <div class="panel-body">
         <div class="col-sm-12 js-pinch">
            <%= render @pinches %>
-           <%= will_paginate @pinches %>
         </div>
       </div>
     </div>
@@ -52,7 +51,7 @@ $(document).ready(function() {
   $export.on("click", function() {
     $img.imgNotes({canEdit: false});
     var $notes = $img.imgNotes('export'); 
-    $img.imgNotes('clear');
+    
     $img.imgNotes({canEdit: true});
       $notes.forEach(function(item) {
         $.ajax({
@@ -68,13 +67,8 @@ $(document).ready(function() {
 <% @pinches.each do |pinch| %>
 <script>
    var $img = $("#image").imgNotes();
-   var equis = '<%= pinch.x %>';
-   var ye = '<%= pinch.y %>';
-   var nota = '<%= pinch.note %>';
-   var eqs = { 'x':equis, 'y':ye, 'note':nota  };
-   var test = JSON.stringify(eqs);
-  console.log(eqs);
-  $img.imgNotes('import', [eqs]);
+   var dot = { 'x':'<%= pinch.x %>', 'y':'<%= pinch.y %>', 'note':'<%= pinch.note %>'  };
+  $img.imgNotes('import', [dot]);
 </script>
 <% end %>
 

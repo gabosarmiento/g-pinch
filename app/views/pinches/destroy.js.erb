@@ -1,0 +1,5 @@
+<% if @pinch.destroyed? %>
+$('.pinch_' + <%= @pinch.id %>).hide();
+<% else %>
+  $('.pinch_' + <%= @pinch.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>
