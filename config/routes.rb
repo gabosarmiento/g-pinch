@@ -25,7 +25,7 @@ GPinch::Application.routes.draw do
       resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'photo' }
     end
   end
-  resources :profile, only: [:index, :show, :update, :destroy]
+  resources :profile
   
   resources :jobs, only: [:index, :new, :show, :create, :destroy] do 
     resources :pinches, only: [:create, :destroy]

@@ -8,6 +8,7 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h1> <%= @profile.user.name %></h1>
+          <p><%= @profile.website %></p>
         </div>
       </div><! --/row -->
     </div><! --/container -->
@@ -22,8 +23,11 @@
           <%= image_tag(@profile.pic.normal.url , class: "img-responsive") %>
           <% else %>
           <%= image_tag(@profile.pic.default_url) %>
+          
           <% end %>
           <p><%= @user.name %></p>
+          <small><%= @profile.country %></small>
+          <p><%= link_to "edit profile", edit_profile_path(@profile) %></p>
           <div class="name-label"></div>
           <div class="col-sm-12 text-center">
             <a href="#" class="js-show-hide btn btn-default" data-selector="js-hire"><h3> Hire Me Now!</h3></a>
@@ -39,14 +43,14 @@
           </div>
         </div><! --/col-lg-4-->
         <div class="col-lg-8 name-desc">
-          <h2><%= @profile.title %></h2>
+          <h2>Title: <%= @profile.title %></h2>
           <div class="name-zig"></div>
           
           <div class="col-md-6">
-            <p><%= @profile.bio %></p>
+            <p>Bio: <%= @profile.bio %></p>
           </div>
           <div class="col-md-6">
-            <p><%= @profile.experience %></p>
+            <p>Experience: <%= @profile.experience %></p>
           </div>
           
         </div><! --/col-lg-8-->

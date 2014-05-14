@@ -4,10 +4,7 @@ class ProfilePolicy < ApplicationPolicy
     true
   end
   def show?
-    user.present? && (record.state?(:approved) || user.role?(:admin))
-  end
-  def update?
-    user.present? && record.user == user && user.role?(:pro) || user.role?(:admin)
+    user.present? && (record.user == user || record.state?(:approved) || user.role?(:admin))
   end
 
 end

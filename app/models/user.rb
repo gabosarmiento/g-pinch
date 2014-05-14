@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :photos
   mount_uploader :avatar, AvatarUploader
-  before_create :set_profile
   
   # Devise callback for facebook oauth 
    def self.find_for_facebook_oauth(auth)
@@ -75,7 +74,5 @@ class User < ActiveRecord::Base
       end
     end  
   end
-  def set_profile
-    self.create_profile
-  end  
+
 end
