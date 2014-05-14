@@ -34,10 +34,15 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-     @photo = Photo.find(params[:id])
-     @portfolio = @photo.portfolio
-      authorize @photo
-      @photo.destroy
+    @photo = Photo.find(params[:id])
+    @portfolio = @photo.portfolio
+    @photos = @portfolio.photos
+    authorize @photo
+    if @photo.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   private 

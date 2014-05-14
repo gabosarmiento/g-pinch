@@ -2,20 +2,76 @@ if($('.js-new-portfolios-photos').length) {
   $('#new_photo').remove(); 
   $('#dropzone').remove();
 }
+
 if($('.jcarousel-ul').length) {
   $('.js-photo-count').remove();
   $('.js-photo-show').append("<span class='badge pull-right'><span class='js-photo-count'><%= @photos.count %></span></span>");
+  <% if @photos.empty? %>
+  $(".js-new-portfolios-photos").html("<%= escape_javascript(render partial: 'photos/form', locals: { portfolio: @portfolio, photo: @photo }) %>");
+  $(".js-new-portfolios-photos").append("<div id='dropzone' class='fade well'><p>Drop files here</p></div>");
+  $('.jcarousel-ul').remove();
+  <% else %>
   $('.jcarousel-ul').html("<%= escape_javascript(render partial: 'photos/photo', collection: @photos)  %>");
+  <% end %>
 }
 else {
+  $('.js-photo-count').remove();
+  <% if @photos.empty? %>
+  $(".js-new-portfolios-photos").html("<%= escape_javascript(render partial: 'photos/form', locals: { portfolio: @portfolio, photo: @photo }) %>");
+  $(".js-new-portfolios-photos").append("<div id='dropzone' class='fade well'><p>Drop files here</p></div>");
+  <% else %>
   var html = "<ul class='jcarousel-ul'>" +  "<%= escape_javascript(render partial: 'photos/photo', collection: @photos)  %>" + '</ul>';
    $('.jcarousel').html(html);
    $('.js-wrapper').append("<a href='' class='jcarousel-control-prev' data-jcarouselcontrol='true'>‹</a>");
    $('.js-wrapper').append("<a href='' class='jcarousel-control-next' data-jcarouselcontrol='true'>›</a>");
    $('.js-photo-show').append("<span class='badge pull-right'><span class='js-photo-count'><%= @photos.count %></span></span>");
+   <% end %>
 }
 
-$(function() {
+(function() {
+  $('#new_photo').fileupload({
+  dropZone: $('#dropzone'),
+  dataType: "script",
+  add: function(e, data) {
+    var file, types;
+    types = /(\.|\/)(gif|jpe?g|png)$/i;
+    file = data.files[0];
+    if (types.test(file.type) || types.test(file.name)) {
+      data.context = $(tmpl("template-upload", file));
+      $('#new_photo').append(data.context);
+      return data.submit();
+    } else {
+      return alert("" + file.name + " is not a gif, jpeg, or png image file");
+    }
+  },
+  progress: function(e, data) {
+    var progress;
+    if (data.context) {
+      progress = parseInt(data.loaded / data.total * 100, 10);
+      return data.context.find('.progress-bar').css('width', progress + '%');
+    }
+  },
+  fail: function(e, data) {
+    if (data.context) {
+      data.context.find('.progress').attr('class', "progress progress-striped");
+    }
+    if (data.context) {
+      data.context.find('.progress-bar').attr('class', "progress-bar progress-bar-danger");
+    }
+    alert("" + data.files[0].name + " failed to upload.");
+    console.log("Upload failed:");
+    return console.log(data);
+  },
+  done: function(e, data) {
+    data.context.text('Upload finished.').delay(2000).fadeOut(2000);
+    if (data.context) {
+      return data.context.remove();
+    }
+  }
+  });
+}(jQuery));
+
+  $(function() {
     var jcarousel = $('.jcarousel');
 
     jcarousel

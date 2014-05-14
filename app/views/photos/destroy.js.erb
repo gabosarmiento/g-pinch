@@ -1,0 +1,7 @@
+<% if @photo.destroyed? %>
+$('#photo_' + <%= @photo.id %>).hide();
+$('.js-photo-count').remove();
+$('.js-photo-show').append("<span class='badge pull-right'><span class='js-photo-count'><%= @photos.count %></span></span>");
+<% else %>
+  $('#photo_' + <%= @photo.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>

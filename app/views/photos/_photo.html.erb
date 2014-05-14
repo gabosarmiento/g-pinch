@@ -1,3 +1,4 @@
- <li>
+ <li id="photo_<%=  photo.id %>">
   <%= link_to image_tag(photo.image.thumb.url), [photo.portfolio, photo], {class: "img-thumbnail"}%>
+  <%= link_to "delete", portfolio_photo_path(photo.portfolio,photo),  method: :delete, remote: true ,  data: {confirmation: "Are you sure?"} %>
  </li>
