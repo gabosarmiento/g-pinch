@@ -4,7 +4,7 @@
       <%= time_ago_in_words(pinch.created_at) %> 
     </div>
     <p><%= pinch.position %> - <%= pinch.note %></p>
-    <p><%= link_to "delete", job_pinch_path(pinch.job, pinch),  method: :delete, remote: true ,  data: {confirmation: "Are you sure?"} %></p>
+    <p><%= link_to "delete", job_pinch_path(pinch.job, pinch),  method: :delete ,  data: {confirmation: "Are you sure?"} , remote: true %></p>
     <div class="pull-right small"><%= pinch.job.user.name %></div>
   </div>
 </div>

@@ -38,6 +38,7 @@ class PortfoliosController < ApplicationController
   end
 
   def destroy
+    @portfolios = current_user.portfolios
     @portfolio = Portfolio.find(params[:id])
     name = @portfolio.name
     authorize @portfolio

@@ -1,5 +1,10 @@
 <% if @portfolio.destroyed? %>
+$('.js-portfolios-count').html("<%= @portfolios.count %>");
 $('.portfolio_' + <%= @portfolio.id %>).hide();
+  if($('.js-new-portfolios-photos').length) {
+    $('#new_photo').remove(); 
+    $('#dropzone').remove();
+  }
  // $('.js-portfolios').prepend("<div class='alert alert-success'><%= flash[:success] %></div>");
  // $('.alert').fadeOut(2000);
 <% else %>

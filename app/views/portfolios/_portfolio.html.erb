@@ -1,5 +1,5 @@
 <div class="portfolio_<%= portfolio.id%> hover">
-<span><%= link_to portfolio.name, portfolio,  id: "portfolio_#{portfolio.id}", remote: true %></span> <% if policy(@portfolio).destroy? %><span><%= link_to(portfolio_path(portfolio), method: :delete, remote: true,  data: {confirmation: "Are you sure? All photos will be deleted as well"}, class: "hovsw", style: "display:none") do %><small>(delete <i class="fa fa-trash-o"></i>)<% end %></span></small><% end %>
+<span><%= link_to portfolio.name, portfolio,  id: "portfolio_#{portfolio.id}", remote: true %></span> <% if policy(portfolio).destroy? %><span><%= link_to(portfolio_path(portfolio), method: :delete, remote: true,  data: {confirmation: "Are you sure? All photos will be deleted as well"}, class: "hovsw", style: "display:none") do %><small>(delete <i class="fa fa-trash-o"></i>)<% end %></span></small><% end %>
 <% if portfolio.public == true %>
 <span class="label label-success pull-right">public</span>
 <% else %>

@@ -1,16 +1,17 @@
 class ProfileController < ApplicationController
   def index
     @profiles = Profile.all.approved
+    authorize @profiles
   end
 
   def show
     @profile = Profile.find(params[:id])
+    authorize @profile 
     @user = @profile.user
     @portfolios = current_user.portfolios
     @judges = User.where(:role => "judge")
     @price = User::PRICE
     @job = Job.new
-    authorize @profile 
   end
 
   def update
