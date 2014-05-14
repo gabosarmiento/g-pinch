@@ -5,7 +5,8 @@ class PinchesController < ApplicationController
     @pinch = @job.pinches.find_or_create_by!(pinches_params)
     @pinch.photo = @photo 
     @pinch.save
-    @pinches = @photo.pinches
+    @pinches = @job.pinches.where(:photo_id => @photo.id)
+    authorize @pinch 
     respond_to do |format|
       format.js 
     end

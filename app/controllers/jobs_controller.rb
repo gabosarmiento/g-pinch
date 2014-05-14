@@ -52,6 +52,7 @@ class JobsController < ApplicationController
     @photo = Photo.find(params[:photo_id])
     @pinch = Pinch.new 
     @pinches = @job.pinches.where(:photo_id => params[:photo_id])
+    authorize @job
   end
  
 

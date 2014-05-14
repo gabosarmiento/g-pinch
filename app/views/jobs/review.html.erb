@@ -20,7 +20,9 @@
           </div>
         </div>
         <div class="panel-footer text-center">
+          <% if policy(@pinch).create? %>
           <button id="save">Save</button>
+          <% end %>
         </div>
     </div>
   </div>
@@ -28,7 +30,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
       Opinions
-      </div>
+      </div>  
       <div class="panel-body">
         <div class="col-sm-12 js-pinch">
            <%= render @pinches %>

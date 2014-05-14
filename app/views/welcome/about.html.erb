@@ -1,2 +1,84 @@
-<h1>Welcome#about</h1>
-<p>Find me in app/views/welcome/about.html.erb</p>
+<div class="jumbotron">
+  <h1>Pinch photos and get rewarded</h1>
+  <p>We want your point of view, lead enthusiast photographers by evaluating their portfolios </p>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          What we want from you
+        </div>
+        <div class="panel-body">
+          <div class="col-md-12" id="profile">
+            <div class='panel-group' id="accordion">
+            <div class="panel panel-default active">
+              <div class='panel-heading'>
+              <h4 class='panel-title'>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span>1</span> <strong>Evaluate your peers</strong>
+              </a>
+              </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse in">
+              <div class="panel-body">
+              You can evaluate other people's public portfolios and earn karma from your contributions. We encourage our evaluators to get a verified profile so people could send you paid requests for revisions. Once your profile is approved your profile will be visible and you'll be able to receive invitations to evaluate portfolios.
+              </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class='panel-heading'>
+              <h4 class='panel-title'>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span>2</span> <strong>Accept requests</strong>
+              </a>
+              </h4>
+              </div>
+              <div id="collapseTwo" class="panel-collapse collapse">
+              <div class="panel-body">
+              You'll receive invitations from users to review their portfolios. Once you opt-in you'll be able to select the jobs from the pinching board and add all the feedback you want.
+              </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class='panel-heading'>
+              <h4 class='panel-title'>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span>3</span> <strong>Receive payment</strong>
+              </a>
+              </h4>
+              </div>
+              <div id="collapseThree" class="panel-collapse collapse">
+              <div class="panel-body">
+              When you finish you'll receive your payment plus a <strike>$50</strike> signing bonus for being hired through Pepperpinch, yes we'll pay you. Your dedicated Talent can help set up more portfolio reviews with enthusiast that view your profile.
+              </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class='panel-heading'>
+              <h4 class='panel-title'>
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span>4</span> <strong>Submit more pinches</strong>
+              </a>
+              </h4>
+              </div>
+              <div id="collapseFour" class="panel-collapse collapse">
+              <div class="panel-body">
+              Pinch is what we call the fusion of comments, tags and markers, and your own taste. Feel free to add as many as you want to anyone until you feel you've improved those enthusiasts lives.
+              </div>
+              </div>
+            </div>
+
+
+            </div><!-- panel group -->
+            </div><!-- col -->
+        </div>
+        <div class="panel-footer">
+      <span class="help-block">Have what it takes to be a judge?</span>
+      <h2><%= link_to "Sign up now!", new_user_registration_path, class: 'btn btn-primary btn-lg', type: "submit" %></h2>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
