@@ -27,7 +27,9 @@
           <% end %>
           <p><%= @user.name %></p>
           <small><%= @profile.country %></small>
+          <% if policy(@profile).edit? %>
           <p><%= link_to "edit profile", edit_profile_path(@profile) %></p>
+          <% end %>
           <div class="name-label"></div>
           <div class="col-sm-12 text-center">
             <a href="#" class="js-show-hide btn btn-default" data-selector="js-hire"><h3> Hire Me Now!</h3></a>
@@ -114,7 +116,7 @@
         verticalOffset: 40
       });
     });
-    </script>
+</script>
 <script>
 $(".js-show-hide").click(function() {
     var selector = "." + $(this).attr('data-selector');
